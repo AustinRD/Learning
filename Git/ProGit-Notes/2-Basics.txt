@@ -1,0 +1,5 @@
+Obtaining a Git Repo:
+    1. Initialize
+    2. Clone
+
+Initializing a Git Repo - project directories not currently under version control are eligible to be initialized with Git. To achieve this, you must be located in that project directory then use the "git init" command.

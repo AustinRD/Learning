@@ -1,0 +1,55 @@
+Version Control - System that records changes to a file or a set of files over time that can be recalled later.
+
+Version Control System (VCS) - allow a user to revert selected files or an entire project, compare changes over time, track contributors, track issues and more.
+
+VCS Types:
+Local - Files are tracked and maintained locally (On the same system they are created on). It may suffer from having a single point of failure. 
+    Example: 
+        RCS - works by keeping patch sets in a special format on disk, files can be recreated at any point by adding up the patches.
+
+Centralized - Allows collaboration on files by moving all versioned and tracked files to a single server which many clients can access.  Another benefit is assigning roles, such as Administrator, who can determine control over who can do certain things. It may suffer from having a single point of failure. 
+    Example:
+        CVS
+        Subversion
+        Perforce
+
+Distributed - client versions of the maintained project mirror the repository for which they are contained and have full access to its history. Each clone of the repository is eligible to become a full backup of the data in the repository.  They allow additional organizational methods such as heirarchical models.
+    Example:
+        Git
+        Mercurial
+        Bazaar
+        Darcs
+
+Delta-Based Version Control - method of version control that stores a set of files and the changes made to each file over time.
+
+
+Git - 
+    Snapshots - git considers data as a series of "snapshots" of a mini-filesystem. For efficiency, files that are not changed are not stored.
+
+    Commit - saving the state of a project by storing a reference to the snapshot of the files at that moment.
+
+    SHA-1 Hashing: checksumming mechanism used by git that generates a 40-character string composed of hex-characters. [0-9a-f]. It's used to index database storage.
+
+    Git generally only adds data to the Git database. It does not generally edit or erase.
+
+    States - 
+        Modified - files changed but not committed (saved to the database)
+        Staged - files marked to be added to the commit snapshot - committed but not pushed
+        Committed - files pushed to the database
+
+    Sections - 
+        Working Directory - single checkout of one version of a project, they make up files pulled from the Git directory and placed on the disk to use or modify.
+        Staging Area (Index) - file contained in the Git diectory that stores information about what will be in the next commit.
+        Git Directory - where Git stores the metadata and object database of a project, it is what is copied when a project is 'cloned'.
+
+    Advantages: 
+        . A git repo can be maintained locally, and backed up remotely. (Network connection not required)
+        . Git checksums data for integrity, the checksum is then used to reference that data when requested. (Prevents loss of data, corruption, and file tampering)
+    
+"git config" - tool that allows us to configure aspects of git including appearance and functionality, by setting certain variables.
+    Locations: 
+        1. [path]/etc/gitconfig - git config --system - contains values applied to every user on the system and all of their repositories. Generally requires administrator or superuser privilege to make changes.
+        2. ~/.gitconfig or ~/.config/git/config - git config --global - contains values applied to an individual user, it applies to all repositories on the local system.
+        3. config - git config --local - contains values specific to a single repository.
+
+        

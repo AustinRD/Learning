@@ -1,0 +1,13 @@
+git config
+    [key]
+    --system
+    --global
+        user.name [name]
+        user.email [email]
+        core.editor [path to executable]
+        init.defaultBranch [branch name]
+    --local
+    --list 
+        --show-origin
+git help <verb> | git <verb> --help | man git-<verb>
+git init

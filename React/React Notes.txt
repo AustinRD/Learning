@@ -1,0 +1,47 @@
+React is a library for building single page application user interfaces.
+React can be used with other technologies to build full stack applications. (ex. MERN stack)
+MERN - MongoDB Express React Node
+
+React can be likened to a framework for its capability but does not come with the tools to make it a native framework.
+
+Why React?  - Gives you a way to structure the view layer of your application. (mVc)
+
+Build a UI using reusable components.
+JSX - JavaScript Sytax Extension - used with react to
+
+Virtual DOM - Document object model - 
+- No page reloading
+Immutable states - 
+
+Should know JavaScript, async, promises, array methods. 
+
+
+
+Building a task tracker - task description - day and time
+Each piece will be its own component
+
+Components in react can be created with functions or classes.  Most popular is functional components.
+Components take in "props"
+
+Components contain "state" - a collapseable menu might have an open or close state.
+App State 
+
+Global State 
+
+Context API - built into react
+
+Redux - external library for managing state
+
+Hooks allow us to use state and other lifecycle methods in functional components
+useState - returns a stateful value and a function to update it
+useEffect - performs side effects in functional components
+
+You can create custom hooks within react.
+
+
+Empty angle brackets can be used when returning information from a react file.
+<> </>  if there's no need for a <div></div>
+
+
+
+
