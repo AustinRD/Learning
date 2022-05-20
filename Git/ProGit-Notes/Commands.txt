@@ -11,3 +11,10 @@ git config
         --show-origin
 git help <verb> | git <verb> --help | man git-<verb>
 git init
+git clone <url>
+git status
+git diff
+    --staged
+    --cached
+git add
+git commit

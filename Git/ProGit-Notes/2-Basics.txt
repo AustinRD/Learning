@@ -3,3 +3,41 @@ Obtaining a Git Repo:
     2. Clone
 
 Initializing a Git Repo - project directories not currently under version control are eligible to be initialized with Git. To achieve this, you must be located in that project directory then use the "git init" command.
+
+Cloning an Existing Git Repo - project directories which contain .git are eligible to be cloned using the "git clone" command.  This creates a full copy of nearly all data contained in the git repo.
+
+Checkout - a working copy of all the files in a Git repo.
+
+File States:
+    Tracked - files that were contained in the last snapshot.
+        Unmodified
+        Modified
+        Staged
+    Untracked - files that are new to the Git repo, have been removed, or are being ignored.
+
+Checking file status - the command "git status" will help determine which state a file or collection of files is in.
+
+Tracking New Files - untracked files can be tracked by simply running the "git add <filename>" command.
+
+Staging Modified Files - a file that is tracked and has been changed must be staged before it is saved. This is achieved with the "git add <filename>" command.
+
+Ignoring Files - when there are files that should not be tracked by the repository, a .gitignore file in the root of the project will take care of making sure they are never tracked.  To achieve this you can simply create the file in the root directory and within that file write the name or pattern of named files to that file. 
+    Ex. *.[oa] - ignores any files ending in .o (object files) or .a (archive files)
+
+    .gitignore rules:
+        . blank lines or lines starting with # are ignored
+        . glob patterns are used, and will apply recursively throughout the working tree
+        . patterns starting with a forward slash are used to avoid recursivity
+        . patterns ending with a forward slash are used to specify a directory
+        . patterns can be negated when starting with an exclamation point
+    
+    Glob Patterns:
+        *       - zero or more characters
+        [abc]   - any character inside the brackets
+        ?       - single character
+        [0-9]   - and character between the hyphen inclusive
+        a/**/z  - nested directories (a/z, a/b/z, a/b/c/z, etc)
+
+Viewing Changes - 
+    git diff - using this command we can see the exact changes in a file, and not just the files that were changed in a list.
+
