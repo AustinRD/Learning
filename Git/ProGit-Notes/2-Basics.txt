@@ -41,3 +41,19 @@ Ignoring Files - when there are files that should not be tracked by the reposito
 Viewing Changes - 
     git diff - using this command we can see the exact changes in a file, and not just the files that were changed in a list.
 
+Saving Changes - 
+    git commit -m "message" - records the snapshot contained in the staging area, unstaged changes will remain unrecorded.
+
+    git commit -a -m "message" - skips the staging area and commits all tracked files directly
+
+Removing Files - removing files from Git is a little more complicated than it appears, they must be removed from the tracked files and then also removed from the remote repository if one exists.
+    git rm - removes a file from tracking and from the working directory.
+
+Moving Files - 
+    git mv [file_from] [file_to] - can be used to rename files, but is equivalent to removing the file and creating a new one.
+
+Viewing Commit History - 
+    git log - used to see the save/snapshot/commit history of the project in a repository.
+
+Undoing Things - 
+    git commit --amend - can be used to add additional files to a commit or change the commit message.

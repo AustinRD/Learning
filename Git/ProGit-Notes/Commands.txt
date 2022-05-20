@@ -18,3 +18,15 @@ git diff
     --cached
 git add
 git commit
+    -a
+    --amend
+git rm
+    --cached
+git log
+    -p -[number]
+    --patch
+    --stat
+    --pretty=[value ex. oneline, short, full, fuller, format]
+    --graph
+    --since
+    --until
