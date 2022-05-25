@@ -33,6 +33,7 @@ git log
     --until
     --oneline 
         --decorate
+    --all
 git reset 
     HEAD <filename>
 git checkout
