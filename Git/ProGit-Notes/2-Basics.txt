@@ -57,3 +57,75 @@ Viewing Commit History -
 
 Undoing Things - 
     git commit --amend - can be used to add additional files to a commit or change the commit message.
+
+    git reset HEAD <filename> - used to unstage staged changes.
+
+    git checkout -- <filename> - used to revert a modified file to its unmodified state. It removes all local changes to that file and can be a dangerous command if used negligently.
+
+    git restore -- alternative to git reset, it can be used to unstage a file, or unmodify a file
+        --staged <filename>
+
+Remote Repositories - versions of a project that are hosted on the internet or intranet, they can be made to be read only or read/write for specific individuals, and enable high levels of collaboration.
+
+    Showing Remotes
+        git remote - lists the shortnames of each remote handle that was specified.
+
+    Adding Remotes
+        git clone - implicitly adds the origin remote
+        git remote add <shortname> <url> - used to explicitly add a new remote repository
+
+    Fetching and Pulling from Remotes
+        fetching only downloads the data to your local repository, it doesn't automatically merge, or modify anything that's being worked on.
+
+        git fetch <remote> - used to get gata from remote projects
+        git fetch origin - used to get any new data from the remote project that has been added since the project was cloned, or since the last time a fetch or pull was made.
+
+        git pull - used when the current branch is set up to track a remote branch, it automatically fetches and merges the remote branch to the current branch unless there are merge conflicts.
+
+    Pushing to Remotes
+        in order to push to a remote branch you must first fetch the work on the branch otherwise the push will be rejected.
+
+        git push - used to share or save the progress of a project and will only work if you have write access to the project you are pushing to.
+            git push <remote> <branch>
+
+    Inspecting a Remote
+        git remote show origin - shows information about a particular remote project, such as remote branches, the local branch, and configuration information.
+
+    Renaming and Removing Remotes
+        git remote rename - used to change a remote's shortname, but will also change all remote-tracking branch names as well.
+
+        get remote remove/rm - used to remove a remote from the project, it will also remove all remote-tracking branches and configuration settings associated with that remote.
+        
+Tagging - the ability to mark certain points in a repository's history as important, it's typically used to denote release points.
+
+    Listing Tags
+        git tag --list - used to list the existing tags in a Git repo in alphabetical order
+            "search criteria" - using the optional search criteria parameter, tags can be searched for that match a specific pattern.
+    Creating Tags
+        Annotated Tags - stored as a full object in the Git database, with a checksum containing the tagger's name, email, date, and message. They can be signed and verified with GNU Privacy Guard.
+            git tag -a <tagname> -m "message"
+
+        Lightweight Tags - pointer to a specific commit
+            git tag <tagname>
+
+        Tags can be created late by supplying the checksum of a commit to the end of the git tag command.
+    Showing Tags
+        git show <tagname> - used to see tag information, that was stored when the tag was created
+    Sharing Tags - by default the git push command does not transfer tags to remote servers. So they need to be explicitly provided.
+        git push origin <tagname> - used to explicity push a tag to a remote
+        git push origin --tags - used to push all existing tags to the remote server
+    Deleting Tags
+        git tag -d <tagname> - used to delete a tag on the local repository
+        git push <remote> :refs/tags/<tagname>: - used to delete a tag on a remote server.
+        git push origin --delete <tagname> - used to delete a tag on a remote.
+    Checking Out Tags
+        git checkout <tagname> - used to view the versions of a file a tag is pointing to, putting the local repo in a "detached HEAD" state.
+Git Aliases - 
+    git config --global alias.co checkout - used to create an alias of the checkout command called co.
+    git config --global alias.unstage 'reset HEAD --' - used to create an alias of the reset head -- command called unstage.
+    git config --global alias.last 'log -1 HEAD' - used to create an alias to see the latest commit.
+
+    If implemented properly, Git aliases can greatly simplify commands that might be otherwise tedious to manage.
+
+    External Commands - 
+    git config --global alias.visual '!gitk' - used to create an alias of an external command. The '!' character is required to specify that the command is external.

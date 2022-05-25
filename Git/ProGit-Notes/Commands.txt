@@ -30,3 +30,24 @@ git log
     --graph
     --since
     --until
+git reset 
+    HEAD <filename>
+git checkout
+    -- <filename>
+git restore
+    --staged <filename>
+git remote
+    -v 
+    add <shortname> <url>
+    show <remote>
+    rename
+    remove
+    rm
+git fetch
+git pull
+git push <remote> <branch>
+git tag
+    <tagname>
+    -l
+    --list
+    -a <tagname> -m "message"
