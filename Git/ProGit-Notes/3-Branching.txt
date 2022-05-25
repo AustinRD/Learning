@@ -14,4 +14,4 @@ Git Branching - branching refers to a method of version control that allows cont
         HEAD - special pointer that points to the local branch that's currently being worked on.
 
     Switching branches
-        git checkout <branchname> - used to switch to an existing branch
+        git checkout <branchname> - used to switch to an existing branch, moving the HEAD pointer to the desired branch.
