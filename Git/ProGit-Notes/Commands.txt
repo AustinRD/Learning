@@ -6,6 +6,7 @@ git config
         user.email [email]
         core.editor [path to executable]
         init.defaultBranch [branch name]
+        alias.<aliasname> 'git command string'
     --local
     --list 
         --show-origin
@@ -30,9 +31,12 @@ git log
     --graph
     --since
     --until
+    --oneline 
+        --decorate
 git reset 
     HEAD <filename>
 git checkout
+    <branchname>
     -- <filename>
 git restore
     --staged <filename>
@@ -51,3 +55,5 @@ git tag
     -l
     --list
     -a <tagname> -m "message"
+git branch
+    <branchname>

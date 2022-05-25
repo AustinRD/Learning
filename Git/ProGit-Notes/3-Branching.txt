@@ -1,0 +1,17 @@
+Git Branching - branching refers to a method of version control that allows contributors to have their own isolated project that is a copy of the main line of development without messing with the main line.  The way branching is handled in Git is particularly lightweight and makes branching operations, and branch switching fast.
+
+    Git's Method: Git stores a commit object that contains a pointer to the snapshot of the content that was staged, the author's name and email, the message that was provided, and pointers to the commit or commits that directly came before that commit. Initial commits have 0 parents or pointers, 1 parent or pointer for a normal commit, and may have multiple parents for a commit that results from the merge of two or more branches.
+
+        Staging files computes the checksum for each one, stores that version of the file in the Git repo (referred to as a blob), and adds the checksum to the staging area.
+
+        Committing files checksums each subdirectory and stores them as a tree object in the Git repo, then creates a commit object that has the metadata and a pointer to the root project tree that can be re-created when needed.
+
+        A directory containing three files would have five git repo objects after a commit is made, that is, three blobs (one for each file), one tree (listing the content of the directory), and one commit (containing a pointer to the root tree and commit metadata)
+
+    Creating a New Branch
+        git branch <branchname> - creates a new pointer to the same commit that was being worked from.
+
+        HEAD - special pointer that points to the local branch that's currently being worked on.
+
+    Switching branches
+        git checkout <branchname> - used to switch to an existing branch
