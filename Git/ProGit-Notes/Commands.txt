@@ -20,6 +20,7 @@ git diff
 git add
 git commit
     -a
+        -m 'commit message'
     --amend
 git rm
     --cached
@@ -33,12 +34,15 @@ git log
     --until
     --oneline 
         --decorate
+            --graph
+                --all
     --all
 git reset 
     HEAD <filename>
 git checkout
     <branchname>
     -- <filename>
+    -b <branchname>
 git restore
     --staged <filename>
 git remote
@@ -58,3 +62,8 @@ git tag
     -a <tagname> -m "message"
 git branch
     <branchname>
+    -b <branchname>
+git switch <branchname>
+    -c <branchname>
+    --create <branchname>
+    -
