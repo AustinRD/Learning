@@ -1,0 +1,15 @@
+Git on the Server
+    Running Git on a server allows a repository to be accessed even when a user is offline.
+
+Bare Repository: Git repository that has no working directory, generally used as a collaboration point and doesn't need to be checked out on disk.
+
+Git Server Protocols:
+    1. Local - remote repo is in another directory on the same host. Used in situations where teams have access to a shared filesystem.
+        
+        With a Local shared filesystem, individuals can clone, push to, and pull from local file-based repositories.
+        git clone <filepath> - uses hardlinks to direct file copies.
+        git clone file://<filepath> - uses Git's file transfer processes, which can be less-efficient.
+
+    2. HTTP
+    3. SSH
+    4. Git

@@ -7,6 +7,7 @@ git config
         core.editor [path to executable]
         init.defaultBranch [branch name]
         alias.<aliasname> 'git command string'
+        credential.helper cache
     --local
     --list 
         --show-origin
@@ -43,6 +44,8 @@ git checkout
     <branchname>
     -- <filename>
     -b <branchname>
+        <remote>/<branch>
+    --track <remote>/<branch>
 git restore
     --staged <filename>
 git remote
@@ -53,8 +56,16 @@ git remote
     remove
     rm
 git fetch
+    <remote>
+    --all
 git pull
-git push <remote> <branch>
+    --rebase
+git push 
+    <remote> 
+        <branch>
+        <localbranchname>:<remotebranchname>
+        --delete <branchname>
+    --set-upstream <remote> <newbranchname>
 git tag
     <tagname>
     -l
@@ -63,7 +74,21 @@ git tag
 git branch
     <branchname>
     -b <branchname>
+    -d <branchname>
+    -u <remote>/<branch>
+    -v
+    -vv
+    --merged
+    --no-merged
+    --move <oldbranchname> <newbranchname>
+    --set-upstream-to <remote>/<branch>
 git switch <branchname>
     -c <branchname>
     --create <branchname>
     -
+git merge
+git ls-remote 
+    <remote>
+git remote 
+    show <remote>
+git rebase <basebranch> <topicbranch>

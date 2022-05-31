@@ -23,5 +23,96 @@ Git Branching - branching refers to a method of version control that allows cont
 
     Creating and Switching to a New Branch
         git checkout -b <newbranchname>
-
         git switch -c <branchname> - alternative to git checkout -b where -c indicates the create keyword.
+
+    Merging
+        git merge <branchname> - used to combine changes in divergent branches. The changes will be added to the branch where the merge is being made from.
+
+        "Fast-Forward" - when a merge is made with no divergent work to be resolved or merged together, the pointer is just moved forward.
+
+    Deleting a Branch  
+        git branch -d <branchname> - used to delete branches that are no longer needed.
+
+    Merge Conflicts - when a branch is merged to another branch or the working directory HEAD, after changes have been made to the same files in both that conflict with each other.
+        
+        Resolving Merge Conflicts - Git applies "conflict-resolution markers" to files that contain conflicts, they can be manually opened and resolved in the editor. When the <<<, ===, and >>> lines have been completely removed, you can stage the changes to mark them as resolved.  After the changes have been staged, it's safe to complete the merge by committing the changes.
+            Ex. <<<<<< HEAD: index.html
+                    some changes
+                =====
+                    more changes
+                >>>>> newbranch: index.html
+
+        Visual Merge Tools: Local versions of Git can be configured to run specified supported tools that may have graphical interfaces to make merge conflicts easier to resolve.
+            git config merge.tool <filepath to exe of tool>
+            git mergetool
+
+    Changing a Branch name
+        * THIS SHOULD NOT BE DONE TO BRANCHES IN USE BY OTHER COLLABORATORS, OR 'master/main'
+        git branch --move <old-branch-name> <new-branch-name> - changing a branch name only applies locally.
+        
+        git push --set-upstream origin <new-branch-name> - changes the branch name on the remote.
+
+        git push origin --delete <old-branch-name> - removes the remote reference to the old branch on the remote.
+
+Branching Workflows
+    Long-Running branches
+        Silos - workflow that contains many branches that are always open and used for different stages of development. They may be merged regularly until they are merged to master/main and no longer needed. In this case, only code that is completely stable may be placed in the master/main branch and there might be a secondary development/develop/next branch that is used to test stability when bringing in topic branches.
+    
+        Proposed/PU Branch - contains integrated branches that may not be ready to go into the next or master branch.
+    Topic branches - short-lived branches that are generally used for a single particular feature or related work.
+
+Remote Branches
+    Remote References - pointers in the remote repositories, including branches, tags, and more.
+        git ls-remote <remote> - used to get a full list of remote references explicitly
+        git remote show <remote> - used to get a full list of remote references explicitly
+
+    Remote-Tracking Branches - local references to the state of remote branches, they can not be moved.  They can be thought of as bookmarks that act to remind you where the branch in a remote repository was the last time it was connected to.
+
+    "Origin" - the default name for a remote, when running git clone.
+        git clone -o <new-origin-name> - used to choose a name other than origin for the remote
+    "Master" - the default name for a starting branch, when running git init.
+
+    As long as the local repo is out of contact with the origin server, the origin/master pointer will not move.
+
+    git fetch <remote> - used to synchronize local work with a given remote. Fetching does not automatically provide an editable copy of the fetched work, it will need to be merged or checked out to.
+        git checkout -b <branchname> <remote>/<remote-branch-name>
+
+    Pushing - synchronizes the remote with the local branches so that the local changes can be accessed by other contributors.
+        git push <remote> <branchname> - used to explicitly push a branch to the remote
+        git push <remote> <local-branch-name>:<remote-branch-name>
+
+        If the remote requires a username and password to push to, then it can be configured with git.
+            git config --global credential.helper cache
+        
+
+    Tracking - 
+        "Tracking branch" - local branch that has a direct relationship to a remote branch. On this branch Git automatically knows which server to fetch from and which branch to merge in.
+
+        git checkout -b <branch> <remote>/<branch>
+        git checkout --track <remote>/<branch>  - used to create a local branch that tracks a remote branch.
+
+        git checkout <remote-branch> - used to create a local branch that tracks a remote branch.
+
+        git branch -u <remote>/<branch> - used to track a different remote branch
+        git branch --set-upstream-to <remote>/<branch>
+
+        git branch -vv - used to check tracking branches
+        git fetch --all - used to get all remote changes
+
+    Pulling
+        git pull - used to fetch and merge changes at the same time. 
+        * It is recommeded to use git fetch and git merge explicitly instead of git pull
+
+    Deleting
+        git push <remote> --delete <branch> - used to remove the pointer from the remote git server to a specific branch. It is generally kept around until garabage collection, incase someone wants to recover the file.
+
+Rebasing - the process of rebasing takes the changes of one branch and applies them to another branch.  In git the operation works by finding the common ancestor of two branches, then taking the diff introduced by each commit and storing them in temporary files, then resetting the current branch to the same commit as the branch and finally applying each change from the temporary files in sequence.
+
+git rebase <basebranch> <topicbranch> - used to check out a topic branch and replay it on to the base branch.
+
+git checkout <basebranch> - following a rebase, we use this command to "fast-forward"
+git merge <topicbranch> - following a rebase, we use this command to "fast-forward"
+
+** Rebasing should not be performed on commits that exist outside of the repository for which they are being rebased to. This is because existing commits are abandonded and new ones are created that differ slightly then, when collaborators may have to re-merge their work and this can lead to some difficult to resolve conflicts. Another side effect of this situation would be that once the conflicts become resolved the rebased commits could be reintroducted on the central server making the history hard to follow.
+
+It's only recommeded that local changes be rebased, and never changes that have been pushed somewhere else (remote).
