@@ -1,3 +1,4 @@
+
 Git on the Server
     Running Git on a server allows a repository to be accessed even when a user is offline.
 
@@ -10,6 +11,54 @@ Git Server Protocols:
         git clone <filepath> - uses hardlinks to direct file copies.
         git clone file://<filepath> - uses Git's file transfer processes, which can be less-efficient.
 
-    2. HTTP
-    3. SSH
-    4. Git
+        git remote add <remote-name> <path> - used to add a local repository to an existing Git project.
+
+        Pros:
+            -simple
+            -use existing file-permissions and network access
+            -quicker to grab other contributor's work than from a Server
+
+        Cons:
+            -shared access can be difficult to set up for multiple locations
+            -slower than SSH
+            -repository is prone to failure/corruption/accidental damage, 
+
+    2. HTTP - 
+        a. Smart HTTP - operates similarly to SSH or Git protocols, but runs over standard HTTPS ports and can utilize HTTP authentication mechanisms. 
+
+        * Used by GitHub
+
+        b. Dumb HTTP - expects the bare Git repo to be served as if they were normal files from the web server. It's simple to set up using a bare Git repo in the document root and a post-update hook.
+
+        Pros:
+            (smart)
+            -simple (single URL for all types of access)
+            -server prompted only when authentication is needed
+            -fast and efficient
+            -can utilize many security configurations
+
+        Cons:
+            -tricky to set up
+
+    3. SSH - common transport protocol for Git when self-hosting because its usable in many places.
+        git clone ssh://[user@]server/project.git
+        git clone [user@]server:project.git
+
+        Pros: 
+            -easy to set up
+            -secure
+            -efficient
+        Cons:
+            -doesn't support anonymous access to the Git repo.
+            -requires SSH access, even in read-only (not healthy for open-source)
+
+    4. Git - daemon that comes packaged with git, it listens on a dedicated port that provides similar service to the SSH protocol, but without authentication. It requires a "git-daemon-export-ok" file and has no security.
+
+        Pros: 
+            -fastest
+            -useful for serving a lot of traffic for a public project, or a large project that doesn't require user authentication.
+            
+        Cons:
+            -no authentication
+            -most difficult to set up
+            -requires its own daemon, and firewall accress to port 9418 which is usually blocked on corporate firewalls.

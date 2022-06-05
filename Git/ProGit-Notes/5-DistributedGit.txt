@@ -1,0 +1,33 @@
+Distributed Git
+
+Distributed Workflows - 
+
+    1. Centralized Workflow
+        Central Hub (repository), can accept code, and everyone sychronizes their work with it. If two developers clone from the hub and both make changes the first developer to push their changes can do so with no problems, the second developer must merge in the first one's work before pushing changes, so as not to overwrite the first developer's changes.
+    2. Integration-Manager Workflow
+        Each developer has access to their own public repository and read access to everyone else's, there's a "canonical" repo that represents the official project. Developers will develop on their own projects and then request the "maintainer" to pull in their work to the canonical repo.
+    3. Dictator and Lieutenants Workflow
+        Variant of a Multiple-Repository workflow, various integration managers are in charge of specific parts of the repository (Lieutenants), all Lieutenants have one integration manager known as the "benevolent dictator". The benevolent dictator is responsible for pushing to a reference repo from which all collaborators will pull.
+
+Contributing to a Project -
+    Factors:
+        Contributor Count - how many users will actively be contributing code to the project?
+        
+        Chosen Workflow - which workflow will be used for the project? should each developer have equal access? does the project have a maintainer or integration manager? are all the patches peer-reviewed and approved? is a lieutenant system in place?
+
+        Commit Access - how does the project prefer to accept contributed work? does it have a policy? how much work will be contributed at a time? how often?
+
+        External Contribution Method - 
+
+    Commit Guidelines
+        git diff --check - identifies possible whitespace errors and lists them.
+
+        It is recommended that a commit is made for each significant, logically separate changeset.
+
+        git add --patch - used to partially stage a file that might be broken into two commits.
+
+        Commit messages should start with a single line that's no more than 50 characters and that describes the changeset concisely, followed by a blank line, followed by a more detailed explanation. Git itself uses a convention that requires the more detailed explaination to include the motivation for the change and contrast its implementation with previous behavior.  The commit message should be written in the "imperative".
+
+        refspec
+
+Maintaining a Project
