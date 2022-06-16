@@ -1,0 +1,19 @@
+Development Requirements
+    Installation of the .NET SDK is required, minimally.
+
+    Once installed the following commands are used to create a project:
+        dotnet new console -o <DirectoryName>
+            console - application type
+            -o - option specified to name a directory to contain the project.
+
+        dotnet run
+
+
+Uses of C#:
+    Mobile Applications
+    Desktop Applications
+    Web Applications
+    Web Services
+    Gamees
+    VR
+    Database Applications
