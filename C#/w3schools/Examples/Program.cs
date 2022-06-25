@@ -125,9 +125,9 @@ Console.WriteLine(Convert.ToString(intNum));
 /*
     User Input
 */
-Console.WriteLine("Enter a username:");
-string username = Convert.ToString(Console.ReadLine());
-Console.WriteLine("Username: " + username);
+// Console.WriteLine("Enter a username:");
+// string username = Convert.ToString(Console.ReadLine());
+// Console.WriteLine("Username: " + username);
 
 
 /*
@@ -260,3 +260,31 @@ Console.WriteLine(fullName);
     arrayName.Min() - returns the smallest value
     arrayName.Sum() - returns the sum of the elements
 */
+
+static void MyMethod(string fname) {
+    Console.WriteLine("Hello " + fname);
+}
+static void MethodWithDefaultParam(string fname = "Austin") {
+    Console.WriteLine("Hello " + fname);
+}
+
+MyMethod("Austin");
+MethodWithDefaultParam();
+
+static string MethodWithNamedArguments(string lname, string fname) {
+    return "Hello, " + fname + " " + lname;
+}
+Console.WriteLine(MethodWithNamedArguments(fname: "Austin", lname: "Developer"));
+
+/*
+    Method Overloading - multiple methods can have the same name with different parameters.
+    Either the number of parameters or the type of parameters or both must be different.    
+*/
+
+Car myCar = new Car();
+Console.WriteLine(myCar.quantity);
+
+// Using a property to change a value
+myCar.Color = "Silver";
+Console.WriteLine(myCar.Color);
+
