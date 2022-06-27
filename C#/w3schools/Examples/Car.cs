@@ -18,8 +18,6 @@ public class Car {
         2. Fields can be made read-only, or write-only
         3. Flexible - allowing programmers to change a single part of the code without affecting others.
         4. Increased security of data.
-
-        Inheritance (Derived and Base Classes)
     */
 
     /* Fields */
@@ -49,7 +47,7 @@ public class Car {
     }
 
     // Constructor with a parameter.
-    public Car(modelName) {
+    public Car(string modelName) {
         model = modelName;
     }
 

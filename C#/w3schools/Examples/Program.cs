@@ -1,5 +1,29 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+// The File class of the System.IO namespace is used to work with files.
+
+using System.IO;
+
+/*
+    Useful File methods:
+        AppendText()        Appends text to the end of an existing file
+        Copy()              Copies a file
+        Create()            Creates or overwrites a file
+        Delete()            Deletes a file
+        Exists()            Tests whether the file exists
+        ReadAllText()       Reads the contents of a file
+        Replace()           Replaces the contents of a file with the contents
+                            of another file
+        WriteAllText()      Creates a new file and writes the contents to it.
+                            If the file already exists it will be overwritten.
+*/
+
+string writeText = "Hello World!";
+File.WriteAllText("filename.txt", writeText);
+
+string readText = File.ReadAllText("filename.txt");
+Console.WriteLine(readText);
+
 /* 
     C# Output
     System - 
@@ -288,3 +312,195 @@ Console.WriteLine(myCar.quantity);
 myCar.Color = "Silver";
 Console.WriteLine(myCar.Color);
 
+/*
+    Inheritance (Derived and Base Classes) - allows one class to "inherit" or access methods 
+        from another class
+        Derived Classes (child) - class that inherits from another class
+        Base Classes (parent) - class that is inherited from
+
+        Useful For:
+            Code Reuseability
+
+    Sealed - keyword indicating a class that should not be inherited from.
+        
+*/
+
+Truck myTruck = new Truck();
+myTruck.honk();
+
+Console.WriteLine(myTruck.color + " " + myTruck.model);
+
+/* 
+    Polymorphism - principle that a method can have many forms, usually relevant when there 
+        is multiple classes inheriting from a single class
+        Methods of the base class override the derived class.
+
+*/
+
+Animal myAnimal = new Animal();
+myAnimal.makeSound();   // Animal Sound
+Animal myDog = new Dog();
+myDog.makeSound();      // Animal Sound
+Animal myCat = new Cat();
+myCat.makeSound();      // Animal Sound
+myCat.move();           // Animal Move
+Animal myDolphin = new Dolphin();
+myDolphin.move();       // Swim
+
+/*
+    Abstraction - process of hiding certain details and showing only the important information 
+        to the user
+
+    Abstract - keyword used for classes and methods to indicate abstraction
+    Abstract classes can not be used to creaqte objects directly, they must be inherited by 
+        other classes.
+
+    Used to provide a layer of security to data, in this way we can hide certain bits of 
+        information and only show the relevant and important ones.
+*/
+
+/* 
+    Interfaces - additional method of achieving abstraction, an interface is an entirely
+        abstract class, containing only abstract methods and properties.
+
+    Interfaces should begin with the letter I
+    By default members of an interface are abstract and public
+
+    Interfaces are "implemented" using the : symbol in the class definition.
+
+    Interfaces may not be used to create objects, and may not contain a constructor
+    Interface methods do not have a body
+    All methods of an interface must be overridden
+
+    Used to provide a layer of security, and as C#'s method of "multiple inheritance", 
+    that is base classes that inherit from multiple parents.
+
+*/
+
+/* 
+    Enumerations - special classes that represent a group of constants, by default
+    enumerations are given values corresponding to the indexed order in which they 
+    are defined starting with zero.
+*/
+Size sodaSize = Size.Small;
+Console.WriteLine(sodaSize);
+Console.WriteLine((int) sodaSize);
+
+/*
+    Error Handling
+    Exceptions - errors found while a program is either compiling, or running that affect the program
+        negatively.
+
+    Try-Catch
+        Try - defines a block of code to be tested for errors while executing
+        Catch - defines a block of code to be executed if some error occurs
+        Finally - defines a block of code that should run regardless of the try catch result
+
+        Throw - keyword that enables the creation of custom errors
+*/
+try
+{
+  int[] myNumbers = {1, 2, 3};
+  Console.WriteLine(myNumbers[10]);
+}
+catch (Exception e)
+{
+  Console.WriteLine("Something went wrong.");
+}
+finally
+{
+  Console.WriteLine("The 'try catch' is finished.");
+}
+
+// Enumeration
+enum Size {
+    Small,
+    Medium = 2, // Sample enum with assigned value
+    Large
+}
+
+// Inheritance
+
+// Base Class
+public class Vehicle {
+    public string color = "Grey";
+
+    public void honk() {
+        Console.WriteLine("Beeep!");
+    }
+}
+
+// Derived Class
+public class Truck : Vehicle {
+    public string model = "F-150";
+}
+
+// Sealed Class -- can not be inherited from
+sealed class Manufacturer {
+    // ...
+}
+
+// Polymorphism
+
+// Base Class
+class Animal {
+    public void makeSound() {
+        Console.WriteLine("Animal sound");
+    }
+    public virtual void move() {
+        Console.WriteLine("Animal Move");
+    }
+}
+// Derived Class
+class Dog : Animal {
+    public void makeSound() {
+        Console.WriteLine("Dog sound");
+    }
+}
+// Derived Class
+class Cat : Animal {
+    public void makeSound() {
+        Console.WriteLine("Cat sound");
+    }
+    public void move() {
+        Console.WriteLine("Walk");
+    }
+}
+class Dolphin : Animal {
+    public void makeSound() {
+        Console.WriteLine("Dolphin sound");
+    }
+    public override void move() {
+        Console.WriteLine("Swim");
+    }
+}
+
+// Abstraction
+abstract class Human {
+    public abstract void makeSound();
+    public void sleep() {
+        Console.WriteLine("zZzZ");
+    }
+}
+
+
+// Interface
+interface IAnimal {
+    void animalSound();  // Interface Method
+}
+
+// Multiple inheritance
+interface IFirstInterface {
+    void myMethod();
+}
+interface ISecondInterface {
+    void myOtherMethod();
+}
+class MultipleInheritanceDemo : IFirstInterface, ISecondInterface {
+    public void myMethod() {
+        // ...
+    }
+    public void myOtherMethod() {
+        // ...
+    }
+}
