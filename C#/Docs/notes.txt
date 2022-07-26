@@ -1,0 +1,92 @@
+C# - Modern, Type-Safe, OOP Language
+    C# is used to build secure and complex applications that run in .NET
+
+    Object Oriented - 
+    Component Oriented - 
+
+    Garbage Collection 
+        - .NET manages the allocation and release of application memory.
+        
+        "Common Language Runtime" - allocates memory for new objects from the managed heap as 
+        long as address space is available. The garbage collector is required to perform 
+        memory collection in order to free some resources when memory runs out. The garbage 
+        collector's optimizing engine determines the best time to perform a collection, based 
+        upon the allocations being made. 
+        
+        - When the garbage collector performs a collection, it checks for objects in the 
+        managed heap that are no longer being used by the application and performs the 
+        necessary operations to reclaim their memory.
+
+    Nullable Types 
+        - before C# 8, all reference types were nullable, nullable types create a way to 
+        prevent null reference errors at runtime. The provide three main features:
+        1. Improved static flow analysis which determines if a variable may be null before
+            dereferencing it.
+        2. Attributes that annotate APIs so that the flow analysis determines null-state.
+        3. Variable annotations that developers use to explicitly declare the intended 
+            null-state for a variable.
+
+    Exception Handling 
+        - provides a structured and extensible approach to error detection and recovery.
+
+    Lambda Expressions
+        - support functional programming techniques.
+
+    Language Integrated Query (LINQ)
+        -
+
+    Asynchronous operations
+
+    Unified Type System
+        type        suffix      range                   use case
+        bool                    true, false 
+        int
+        long        l
+        float       f
+        double      d
+        decimal     M                                   sensitive information requiring a large number of significant figures.
+
+
+    C# does not treat white space or indentation as significant.\
+
+C# Variable Naming Rules/Conventions:
+    - Can contain alphanumeric and the underscore character. 
+        Special characters like such as #, and $ are not allowed.
+    - Must begin with an alphabetical letter or an underscore, not a number.
+        variables beginning with _ have special use cases.
+    - Must not be a predefined C# keyword.
+    - Case-sensitive
+    - Camel-case:
+        thisIsACamelCaseExample - name begins with a lowercase letter, and each word after is capitalized.
+    - Should be descriptive and meaningful
+    - Should be one or more words appended together
+    - Should not include the data type
+
+Implicitly typed local variables:
+    - Variables can be declared using the "var" keyword if they are initialized, instructing the compiler to "infer" the type.
+
+C# Strings - 
+    C# Recommends avoiding "Intermediate" variables - that is, variables that store information for the purpose of printing the result of some expression.
+        Example:                                                                            Example:
+            int a = 1;                                                                          string firstName = "Austin";
+            int b = 2;                                                                          string greeting = "Hello,";
+            int sum = a + b; -- Intermediate Variable                                           string message = greeting + " " + firstName; -- Intermediate Variable
+            Console.WriteLine(sum); -- sum can be replaced with the expression instead.         Console.WriteLine(message)
+
+    String Interpolation:
+        - Used to combine multiple values into a single string literal by using a "template" and one or more interpolation expressions.
+            Interpolation expressions are surrounded by {}, they become
+            templates when prefixed by a $ symbol
+            verbatim Literals are created with a combination of the $ and @ symbol
+        Ex.
+            string message = $"{greeting} {firstname}!";  - interpolated string
+            
+            string projectName = "First-Project";
+            Console.WriteLine($@"C:\Output\{projectName}\Data");
+
+Data Conversion
+Operator Overloading - name given to the practice of giving an operator more than one function.
+    Ex. +
+        - the + operator represents the addition function for numbers
+        - the + operator represents the concatenation function for strings
+
