@@ -1,0 +1,107 @@
+## ADD TO LEARNING LINKS ##
+https://jamielinux.com/docs/openssl-certificate-authority/introduction.html
+
+
+Section 2: Introduction to Web Services
+
+What is a webservice?
+W3C Definition	- Software system designed to support interoperable machine-to-machine interaction over a nework.
+	1. Interoperable
+	2. Machine to machine or application to application
+	3. Allow Communication over a network
+
+How?
+How does data exchange between applications take place?
+Input -> Request
+Output-> Response
+
+How can we make web services platform independent?
+Request and Response should also be platform independent.
+	Popular Message/Data Exchange Formats:
+		1. XML
+		2. JSON
+
+How does an application know the format of Request and Response?
+Service Definition:
+	1. Request/Response Format
+	2. Request Structure
+	3. Response Structure
+	4. Endpoint
+
+Terminology:
+	1. Service Provider - hosts the service
+	2. Service Consumer - wants to utilize the service
+	3. Service Definition - contract between consumer and provider
+	4. Transport - how a service is called
+		ex. internet (HTTP), queue (MQ)
+
+
+SOAP 	- defines a specific method of building webservices
+	- uses XML as message exchange format
+	- deprecated acronym: Simple Object Access Protocol
+
+	- SOAP Structure:
+		- SOAP Envelope
+			- Header (optional): Metadata - authentication, authorization, signature, etc.
+			- Body: 
+
+	- Service Definition: WSDL - Web Service Definition Language
+		- Endpoint
+		- Operations
+		- Request Structure
+		- Response Structure
+
+REST	- Representational State Transfer
+	- Seeks to make the best use of HTTP
+	- Uses any message exchange format
+		a. JSON
+		b. XML
+		c. ...
+	- Transports information only through HTTP or HTTPS
+	- No standard service definition
+		a. Swagger
+		b. WADL - Web Application Definition Language
+		c. ...
+
+HTTP 	- Hypertext Transfer Protocol
+	HTTP Request - 
+		HTTP Request Methods:
+			1. GET - retrieve
+			2. PUT - update
+			3. POST - create
+			4. DELETE - delete
+	HTTP Response - Contains HTML data to be displayed by a browser
+		HTTP Response Status Codes:
+			1. 200 - Success
+			2. 400 - Request Error
+			3. 500 - Server Error
+
+Resource - anything that you would want to expose to the outside world through your application
+	1. URI - Uniform Resource Identifier
+	2. Representations
+		- XML
+		- HTML
+		- JSON
+
+			REST 			V.S. 			SOAP
+			Architechural Design 				Format of XML
+Data Exchange Format	Not Strict					XML
+Service Definition	Not Strict (Swagger Popular)			WSDL		
+Transport		HTTP						No Restrictions
+Ease of Implementation	Easy						Moderate to Complex
+
+
+
+Section 3: Restful Web Services with Spring Boot - V2
+
+Getting Started With Spring Boot
+WHY - 
+	Before Spring Boot the following had to be completed before you could use an application
+		and was required for every new project, which could have taken days to do.
+	1. Dependency Management (pom.xml)
+	2. Define Web App Configuration (web.xml)
+	3. Manage Spring Beans (context.xml)
+	4. Implement Non-functional Requirements
+WHAT
+HOW
+COMPARE
