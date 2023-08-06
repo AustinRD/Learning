@@ -1,0 +1,192 @@
+SQL - Structured Query Language
+    - Programming langauge used to interact with RDBMS
+
+RDBMS - Relational Database Management System
+    - Stores data in a collection of tables
+    - Relations can be defined between the common fields of such tables
+
+    Tables - Rows of a table can be called "Records"
+        - Columns of a table can be called "Fields"
+
+Constraints - specify rules governing fields in tables
+    Common Constraints:
+        NOT NULL - the field can not contain a null value
+        CHECK - values in these fields must pass some condition
+        DEFAULT - defines a value that is automatially assigned to a field if no value is provided
+        UNIQUE - the field must contain unique values, meaning another field can not contain the same value
+            - can be multiple per table
+        INDEX - the field is given an index for quick-lookup/fast retrieval of records
+            Types:
+                Unique - help maintain data integrity by ensuring no two rows of data have identical values
+                Non-Unique - not used to enforce constrains on tables, but may be used to improve query performance
+                Clustered - order of rows in the database corresponds to order of rows in the index
+                    - only one may exist in a table
+                    - modifies record storage based on indexed Columns
+                    - quick retrieval of data
+                Non-Clustered - 
+                    - multiple may exist in a table
+                    - creates a separate table entity that references the original table
+                    - slower
+
+        PRIMARY KEY - specifies that a field will uniquely identify some record
+            - must be unique, and not null by default
+            - may be comprised of one or more fields
+            - one per table
+        FOREIGN KEY - specifies that the field of one table is the primary key field of another table
+            - may be comprised of one or more fields
+            - ensures "referential integrity"
+
+JOINS - clauses used to combine the records of multiple tables based on some common field(s)
+    *think venn diagram*
+
+    (INNER) JOIN - retrieves records with matching values in both tables
+    LEFT JOIN - retrieves records from the left and matched records from the right
+    RIGHT JOIN - retrieves records from the right and matched records from the left
+    FULL (OUTER) JOIN - retrieves all records matching either left or right
+
+    SELF JOIN - when a single table is joined to itself based on the relation of its own fields
+        - does not include a JOIN clause
+            EX.
+                SELECT a.data AS "something", b.data AS "somethingelse"
+                    FROM tablename a, tablename b
+                    WHERE a.data = b.data
+
+    CROSS JOIN - cartesian product of two tables
+        - with a where clause this is the same as INNER JOIN
+    
+Data Integrity - accuracy and consistency of data over its life-cycle.
+    - may enforce business rules on data when entered into an application
+
+Query - request for data from the database
+    Select Query - Retrieve some data
+    Action Query - Update some data
+
+Subquery - also known as nested or inner query.
+    - used to restrict or enchance data queried by the main query
+
+    Correlated - not an independent query, can refer to fields from the table in FROM of the main query.
+
+    Non-Correlated - independent query, output of the subquery is substituted in the main query.
+
+SELECT - Query operator that returns a"result-set" of data from selected tables in the database
+    Common Clauses:
+        WHERE
+        ORDERBY
+            ASC
+            DESC
+        GROUPBY
+            HAVING
+
+    UNION - combines and returns the result-set retrieved by two or more SELECT statements
+    UNION ALL - includes duplicates
+    MINUS - used to remove duplicates from two sets of data selected with separate SELECT clauses
+    INTERSECT - returns the matched result set of two SELECT clauses
+    
+    DROP - removes all information associated with those tables including relationships defined in that table
+        and other tables, integrity checks, constraints and access priveledges.
+    - v.s. - 
+    DELETE - deletes only the specified rows of a table based on a condition in a WHERE clause, all rows if no
+        where claus is provided. Does not free space containing the table.
+    - v.s. -
+    TRUNCATE - removes all data (rows) from a table. Frees the space containing the table.
+
+
+Cursor - control structure that allows records to be traversed in a database.
+    - allows processing after traversal: retrieval, addition, and deletion
+
+Entity - data that correlates to some real-world object, tangible or intangible, that is identifiable.
+    Example: students, professors, workers, departments, projects
+    - Has associated properties that provide some identity
+
+Relationship - links between entities that have something to do with each other
+    Example: employees table may be associated with salary table.
+
+    Types:
+        One-to-One: each record in one table is associated with the maximum of one record in the other table
+        One-to-Many & Many-to-One: each records in one table is associated with multiple records in another table
+        Many-to-Many: multiple records in both tables are needed to define this relationship
+        Self-Referencing Relationships: table defines a relationship within itself
+
+Alias - temporary name assigned to a table or column for the purpose of a query.
+    - may work similarly to a variable.
+
+View - virtual table based on the result-set of an SQL statement
+
+Normalization - method of organizing structured data efficiently.
+    - comprised of a set of rules or "forms" that dictate things like:
+        . how tables should be created
+        . how relationships should be established
+    - reduces inconsistency and redundancy
+    - improves flexibility
+
+    Forms:
+        First Normal Form - every attribute is a single-valued attribute. No column contains more than one value.
+        Second Normal Form - first normal and contains no partial dependencies. Tables are created to ensure that non-prime attributes do not depend on candidate keys.
+            Ex. separate a table for Books and a table for students instead of using one students table
+        Third Normal Form - second normal form and no transitive dependency. Non-prime attributes do not depend on each other.
+        Boyce-Codd Normal Form - third normal form an conditions for functional dependency
+
+Denormalization - inverse process of normalization, normalized schema may be converted into a schema with redundant information
+    - used when database may be "over-normalized" created too much overhead for the query processor
+
+
+Aggregate Functions - performs operations on a collection of values to return a single scalar value
+    AVG()
+    COUNT()
+    MIN()
+    MAX()
+    SUM()
+    FIRST()
+    LAST()
+Scalar Functions - return a single value based on the input value
+    LEN()
+    UCASE()
+    LCASE()
+    MID()
+    CONCAT()
+    RAND()
+    ROUND()
+    NOW()
+    FORMAT()
+
+User-Defined Functions - accept parameters, perform calculations, and return a value.
+    Table-Valued Functions: return a table as output.
+        Inline: returns a table data type based on a single SELECT statement
+
+        Multi-Statement: returns a tabular result-set, multiple SELECT statements may be used inside the function body
+
+
+OLTP - Online Transaction Processing - software applications capable of supporting transaction-oriented programs.
+    - ability to maintain concurrency
+    - decentralized, avoiding single points of failure
+    - designed for a large number of users who conduct short transactions
+
+OLAP - Online Analytical Processing - software applications that are characterized tby the relatively low frequency of online transactions.
+    - queries may be complex and involve a lot of aggregations
+    - effectiveness relies on response time
+    - designed for data mining or maintaining aggregated historical data
+
+Collation - set of rules that determine how data is sorted and compared
+    Collation Sensitivity:
+        Case Sensitivity
+        Accent
+        Kana
+        Width
+
+Stored Procedure - subroutine available to applications that access an RDBMS
+    - stored in the database data dictionary
+    - can only be executed in the database and occupies more memory in the database server
+    - users who can't access data directly can be granted accress via stored procedures
+
+Recursive Stored Procedure - 
+    - allows programmers to deploy the same set of code several times as required
+    - may be limited by some SQL languages to prevent stack overflow
+
+INTO --> Operator that allows data to be copied
+    - can be used to copy the table structure of another table with or without the data
+
+Pattern Matching - 
+    % - wildcard matching zero or more characters of any type, can be used both before and after a Pattern
+    NOT - matching patters not including the specified pattern
+    %% - matching patters containing any number of occurances of a sequence
+    _ - matching patterns with a specific length, or number of characters
